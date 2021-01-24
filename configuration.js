@@ -4,5 +4,6 @@ module.exports = {
   expectedApiResponseLatency: 50,
   jsonParser: {
     limit: "5mb"
-  }
+  },
+  enableCors: true
 };

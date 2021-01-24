@@ -1,6 +1,7 @@
 const { log } = require("./useCases/log");
 const addApi = require("./helpers/addApi");
 const measurePerformance = require("./helpers/measurePerformance");
+const cors = require("express-cross-origin-resource-sharing");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -12,6 +13,10 @@ log({ type: "debug", action: "startup", message: "Booting up Payments service" }
 addApi(router, require("./api/v1/commitTransaction"));
 addApi(router, require("./api/v1/getTransaction"));
 addApi(router, require("./api/v1/getTransactionList"));
+
+if (configuration.enableCors) {
+  app.use(cors);
+}
 
 if (configuration.warnOnSlowApiResponse) {
   app.use(measurePerformance);

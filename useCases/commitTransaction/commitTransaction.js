@@ -50,6 +50,8 @@ module.exports = ({ log, transactionDB, accountDB }) => {
 
     }
 
+    transaction.date = new Date();
+
     await Promise.all([
       transactionDB.save(transaction),
       accountDB.saveField(accountId, "amount", accountData.funds)
