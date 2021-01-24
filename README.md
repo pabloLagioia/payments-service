@@ -5,7 +5,7 @@ POST /v1/transaction
 
 Headers
   - Content-Type: application/json
-  
+
 Status
   - 200: OK
   - 400: Something in the request is incorrect
@@ -59,3 +59,7 @@ Response body:
     ...
   ]
 }
+
+## How to run
+npm install
+npm start
