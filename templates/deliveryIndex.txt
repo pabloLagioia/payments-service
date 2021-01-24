@@ -1,0 +1,9 @@
+const { useCaseName } = require("../../../useCases/useCaseName");
+const { log } = require("../../../useCases/log");
+
+module.exports = {
+  ... require("./useCaseName")({
+    useCaseName,
+    log
+  })
+};

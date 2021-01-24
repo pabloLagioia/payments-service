@@ -1,0 +1,49 @@
+const { BadRequest } = require("../../errors");
+const { InvalidArgumentError } = require("../../../useCases/errors");
+
+const makeUseCaseName = ({ useCaseName, log }) => {
+
+  const handler = async (req, res, next) => {
+
+    try {
+
+      log({
+        "type": "info",
+        "action": "useCaseName",
+        "message": "Request received"
+      });
+
+      const result = await useCaseName({ ... req.body, ... req.params, ... req.query });
+
+      res.set("content-type", "application/json");
+      res.status(200);
+      res.end(JSON.stringify(result));
+
+    } catch (error) {
+
+      log({
+        "type": "error",
+        "action": "useCaseName",
+        "message": error.message,
+        "data": error
+      });
+
+      if (error instanceof InvalidArgumentError) {
+        return next(new BadRequest(error.message, error.customMessage, error.constructor.name));
+      }
+
+      next(error);
+
+    }
+
+  };
+
+  return {
+    handler,
+    method: "post", //TODO: replace with correct method
+    path: "/v1/useCaseName" //TODO: replace with correct path
+  };
+
+};
+
+module.exports = makeUseCaseName;

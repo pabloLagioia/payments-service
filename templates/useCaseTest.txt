@@ -1,0 +1,10 @@
+const makeUseCaseName = require("./useCaseName");
+const sinon = require("sinon");
+
+describe("useCaseName", () => {
+  
+  it("should...", () => {
+    
+  });
+  
+});

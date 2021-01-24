@@ -1,0 +1,20 @@
+module.exports = ({ log }) => {
+  
+  const useCaseName = ({}) => {
+
+    log({
+      "type": "debug",
+      "action": "useCaseName",
+      "message": "Invoked (check arguments under data field)",
+      "data": arguments
+    });
+
+    //TODO: Logic goes here
+
+  };
+  
+  return {
+    useCaseName
+  };
+
+};
