@@ -15,7 +15,7 @@ addApi(router, require("./api/v1/getTransaction"));
 addApi(router, require("./api/v1/getTransactionList"));
 
 if (configuration.enableCors) {
-  app.use(cors);
+  app.use(cors());
 }
 
 if (configuration.warnOnSlowApiResponse) {
