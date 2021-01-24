@@ -1,5 +1,5 @@
 module.exports = {
-  port: 3000,
+  port: 3001,
   warnOnSlowApiResponse: true,
   expectedApiResponseLatency: 50,
   jsonParser: {
